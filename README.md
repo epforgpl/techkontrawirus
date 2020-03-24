@@ -23,6 +23,11 @@ Then, run the following commands:
 At this point, please edit the `.env` file, setting at least the variables
 responsible for DB connection.
 
+To create all the required tables in the database and seed it with example data, run:
+
+    php artisan migrate
+    php artisan db:seed
+
 Finally, run:
 
     php artisan serve
