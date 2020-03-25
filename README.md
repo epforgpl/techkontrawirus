@@ -34,6 +34,10 @@ Finally, run:
     
 A locally running website will then be available at [http://localhost:8000](http://localhost:8000).
 
+## Deployment
+
+Please see the related repo [https://github.com/epforgpl/techkontrawirus-docker](https://github.com/epforgpl/techkontrawirus-docker) for code that makes deploying this easy.
+
 ## Author
 
 The code in this repository was produced by [Fundacja ePaństwo](https://epf.org.pl).
