@@ -2,27 +2,30 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Comment;
 use App\Idea;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Request;
 
 class IdeasController extends Controller
 {
     public function ideas()
     {
-        $ideas = Idea::all();
+        $ideas = Idea::with('categories')->get();
         $ideas = $ideas->sortBy(function (Idea $idea) {
             return $idea->minus - $idea->plus;
         });
         return view('ideas')->with([
             'ideas' => $ideas,
-            'voting_history' => request()->voting_history
+            'voting_history' => request()->voting_history,
+            'categories' => Category::all()
         ]);
     }
 
     public function idea($idea_id)
     {
-        $idea = Idea::with('comments')->find($idea_id);
+        $idea = Idea::with(['categories', 'comments'])->find($idea_id);
         if (!$idea) {
             abort(404);
         }
@@ -40,17 +43,18 @@ class IdeasController extends Controller
 
     public function newIdea()
     {
-        return view('new-idea');
+        return view('new-idea')->with(['categories' => Category::all()]);
     }
 
     public function saveNewIdea()
     {
         $title = Request::input('title');
         $description = Request::input('description');
+        $categories = Request::input('categories');
         $problem = Request::input('problem');
         $recipients = Request::input('recipients');
         $solution = Request::input('solution');
-        if (!$this->validateIdeaInput($title, $description, $problem, $recipients, $solution)) {
+        if (!$this->validateIdeaInput($title, $description, $categories, $problem, $recipients, $solution)) {
             abort(400);
         }
 
@@ -61,11 +65,21 @@ class IdeasController extends Controller
             'recipients' => $recipients,
             'solution' => $solution
         ]);
+
+        if ($categories) {
+            foreach (explode(',', $categories) as $category_id) {
+                DB::table('categories_ideas')->insert([
+                    'category_id' => $category_id,
+                    'idea_id' => $idea->id
+                ]);
+            }
+        }
+
         return redirect("/pomysl/$idea->id?nowy-pomysl=1");
     }
 
-    private function validateIdeaInput(?string $title, ?string $description, ?string $problem, ?string $recipients,
-                                       ?string $solution): bool
+    private function validateIdeaInput(?string $title, ?string $description, ?string $categories,
+                                       ?string $problem, ?string $recipients, ?string $solution): bool
     {
         if (!$title || !$description || !$problem || !$recipients || !$solution) {
             return false;
@@ -74,6 +88,15 @@ class IdeasController extends Controller
             || (strlen($recipients) > 1200) || (strlen($solution) > 1200)) {
             return false;
         }
+        $all_category_ids = Category::all()->map(function (Category $category) { return $category->id; });
+        if ($categories !== null && $categories !== '') {
+            foreach (explode(',', $categories) as $category_id) {
+                if (!$all_category_ids->contains($category_id)) {
+                    return false;
+                }
+            }
+        }
+
         return true;
     }
 

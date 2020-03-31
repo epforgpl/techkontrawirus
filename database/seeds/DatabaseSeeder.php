@@ -12,6 +12,63 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('categories')->insert([
+            'id' => 1,
+            'name' => 'dla chorych',
+            'background_color' => '#007bff',
+            'text_color' => '#ffffff',
+        ]);
+        DB::table('categories')->insert([
+            'id' => 2,
+            'name' => 'dla niewychodzących z domu',
+            'background_color' => '#6610f2',
+            'text_color' => '#ffffff',
+        ]);
+        DB::table('categories')->insert([
+            'id' => 3,
+            'name' => 'edukacja / kultura',
+            'background_color' => '#9B479F',
+            'text_color' => '#ffffff',
+        ]);
+        DB::table('categories')->insert([
+            'id' => 4,
+            'name' => 'gospodarka / praca / urząd',
+            'background_color' => '#e83e8c',
+            'text_color' => '#ffffff',
+        ]);
+        DB::table('categories')->insert([
+            'id' => 5,
+            'name' => 'informacje, dane i media',
+            'background_color' => '#D9230F',
+            'text_color' => '#ffffff',
+        ]);
+        DB::table('categories')->insert([
+            'id' => 6,
+            'name' => 'psychologia',
+            'background_color' => '#D9831F',
+            'text_color' => '#000000',
+        ]);
+        DB::table('categories')->insert([
+            'id' => 7,
+            'name' => 'społeczność lokalna',
+            'background_color' => '#ffc107',
+            'text_color' => '#000000',
+        ]);
+
+        DB::table('categories')->insert([
+            'id' => 8,
+            'name' => 'urządzenia',
+            'background_color' => '#20c997',
+            'text_color' => '#000000',
+        ]);
+
+        DB::table('categories')->insert([
+            'id' => 9,
+            'name' => 'zdrowie / służba zdrowia',
+            'background_color' => '#029ACF',
+            'text_color' => '#ffffff',
+        ]);
+
         DB::table('ideas')->insert([
             'title' => 'Apka przypominająca o myciu rąk',
             'description' => 'Aplikacja cyklicznie włącza powiadomienie o myciu rąk, oraz gra muzykę na czas mycia',
@@ -20,6 +77,11 @@ class DatabaseSeeder extends Seeder
             'solution' => 'Aplikacja podobnie jak te przypominające o częstym piciu wody, co jakiś czas wydaje dźwięk. Użytkownik/czka idzie wtedy umyć ręce. Można sobie ustawić ulubiony kawałek muzyczny, którzy będzie odtwarzany przez 20-30 sekund lub dokładną instrukcję głosową, która tłumaczy jak poprawnie myć ręce. Apka raz dziennie przypomina również o odkażaniu telefonu.',
             'plus' => 14,
             'minus' => 6
+        ]);
+
+        DB::table('categories_ideas')->insert([
+            'category_id' => 9,
+            'idea_id' => 1
         ]);
 
         DB::table('comments')->insert([
@@ -47,6 +109,11 @@ class DatabaseSeeder extends Seeder
             'minus' => 2
         ]);
 
+        DB::table('categories_ideas')->insert([
+            'category_id' => 5,
+            'idea_id' => 2
+        ]);
+
         DB::table('comments')->insert([
             'idea_id' => 2,
             'content' => 'Czy nie za dużo takich serwisów w tych dniach? Jest taki zalew informacji...',
@@ -66,6 +133,16 @@ class DatabaseSeeder extends Seeder
                 . 'co dzieje się przy zbliżeniu ręki do twarzy, element na okularach zaczyna piszczeć.',
             'plus' => 3,
             'minus' => 6
+        ]);
+
+        DB::table('categories_ideas')->insert([
+            'category_id' => 8,
+            'idea_id' => 3
+        ]);
+
+        DB::table('categories_ideas')->insert([
+            'category_id' => 9,
+            'idea_id' => 3
         ]);
 
         DB::table('comments')->insert([
@@ -91,6 +168,16 @@ class DatabaseSeeder extends Seeder
             'minus' => 3
         ]);
 
+        DB::table('categories_ideas')->insert([
+            'category_id' => 1,
+            'idea_id' => 4
+        ]);
+
+        DB::table('categories_ideas')->insert([
+            'category_id' => 9,
+            'idea_id' => 4
+        ]);
+
         DB::table('ideas')->insert([
             'title' => 'Szkolenia z IT dla osób tymczasowo nie mogących pracować',
             'description' => 'Wiele osób tymczasowo nie może pracować. Wykorzystajmy ten czas, by dać im wiedzę IT. '
@@ -103,6 +190,16 @@ class DatabaseSeeder extends Seeder
                 . 'coding academy?"',
             'plus' => 7,
             'minus' => 0
+        ]);
+
+        DB::table('categories_ideas')->insert([
+            'category_id' => 3,
+            'idea_id' => 5
+        ]);
+
+        DB::table('categories_ideas')->insert([
+            'category_id' => 4,
+            'idea_id' => 5
         ]);
 
         DB::table('comments')->insert([
@@ -134,6 +231,11 @@ class DatabaseSeeder extends Seeder
             'minus' => 2
         ]);
 
+        DB::table('categories_ideas')->insert([
+            'category_id' => 5,
+            'idea_id' => 6
+        ]);
+
         DB::table('ideas')->insert([
             'title' => 'Strona kojarząca lekarzy, pielęgniarki z wolontariuszami chętnymi by ich odciążyć poza pracą',
             'description' => 'Potrzebujemy, by personel medyczny mógł teraz działać z pełną energią i wydajnością, '
@@ -146,6 +248,11 @@ class DatabaseSeeder extends Seeder
                 . 'ich odciążyć. Źródło pomysłu: https://www.feedadoc.com',
             'plus' => 0,
             'minus' => 0
+        ]);
+
+        DB::table('categories_ideas')->insert([
+            'category_id' => 9,
+            'idea_id' => 7
         ]);
 
         DB::table('ideas')->insert([
@@ -163,6 +270,16 @@ class DatabaseSeeder extends Seeder
             'minus' => 2
         ]);
 
+        DB::table('categories_ideas')->insert([
+            'category_id' => 4,
+            'idea_id' => 8
+        ]);
+
+        DB::table('categories_ideas')->insert([
+            'category_id' => 7,
+            'idea_id' => 8
+        ]);
+
         DB::table('ideas')->insert([
             'title' => 'Mapa gdzie osoby chore (lub bliscy) zaznaczają fakt chorowania',
             'description' => 'Dobrze byłoby wiedzieć, że np. w moim sąsiedztwie ktoś choruje - wtedy mogę przez jakiś czas być ostrożniejszy. Państwo nam nie powie gdzie dokładnie są osoby chore - może one same mogą?',
@@ -171,6 +288,21 @@ class DatabaseSeeder extends Seeder
             'solution' => 'Strona, gdzie osoba, która choruje (lub jej bliscy) może oznaczyć kropką na mapie, że aktualnie jest chora. Oczywiście nie musi to być z dokładnością do konkretnego domu, dla zachowania prywatności. Źródło pomysłu: https://helpwithcovid.com/projects/81',
             'plus' => 0,
             'minus' => 0
+        ]);
+
+        DB::table('categories_ideas')->insert([
+            'category_id' => 1,
+            'idea_id' => 9
+        ]);
+
+        DB::table('categories_ideas')->insert([
+            'category_id' => 7,
+            'idea_id' => 9
+        ]);
+
+        DB::table('categories_ideas')->insert([
+            'category_id' => 9,
+            'idea_id' => 9
         ]);
     }
 }

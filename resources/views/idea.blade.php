@@ -38,6 +38,14 @@
                 <div class="who_when">
                     Dodano {{ $idea->getCreatedAtForDisplay() }}
                 </div>
+                <div>
+                    @foreach ($idea->categories as $category)
+                        <b-badge style="color: {{ $category->text_color }};
+                                        background-color: {{ $category->background_color }}">
+                            {{ $category->name }}
+                        </b-badge>
+                    @endforeach
+                </div>
                 <h1 class="title"><a href="/pomysl/{{ $idea->id }}">{{ $idea->title }}</a></h1>
 
                 <div class="description pb-4 mb-4">{{ $idea->description }}</div>
@@ -68,8 +76,7 @@
                                     :vote-on-load="{{ $voting_history->getCommentVote($comment->id) }}"></plus-minus>
                     </div>
                     <div class="card-body">
-                        <div class="who_when">
-                            Dodano {{ $comment->getCreatedAtForDisplay() }}</div>
+                        <div class="who_when">Dodano {{ $comment->getCreatedAtForDisplay() }}</div>
                         <div>{{ $comment->content }}</div>
                     </div>
                 </div>
