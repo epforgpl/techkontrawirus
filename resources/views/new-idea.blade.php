@@ -3,6 +3,46 @@
 @section('title', 'Tech kontra wirus | Dodaj swój pomysł')
 
 @section('styles')
+    <style>
+        @foreach ($categories as $category)
+        {{-- TODO: Possibly some clean-up here. --}}
+        .btn-category-{{ $category->id }} {
+            color: {{ $category->text_color }};
+            background-color: {{ $category->background_color }};
+            border-width: 0;
+            border-color: {{ $category->background_color }};
+            box-shadow: none !important;
+            background-image: none;
+            margin: 0 15px 15px 0;
+        }
+        .btn-category-{{ $category->id }}:active {
+            color: {{ $category->text_color }} !important;
+            background-color: {{ $category->background_color }} !important;
+            border-width: 0;
+            background-image: none;
+        }
+        .btn-category-{{ $category->id }}:hover {
+            color: {{ $category->text_color }};
+            background-color: {{ $category->background_color }};
+            background-image: none;
+            border-width: 0;
+            filter: brightness(120%);
+        }
+        .btn-category-{{ $category->id }}:focus {
+            color: {{ $category->text_color }};
+            background-color: {{ $category->background_color }};
+            border-width: 0;
+            background-image: none;
+        }
+        .btn-category-{{ $category->id }}.pressed {
+            color: {{ $category->text_color }} !important;
+            background-color: {{ $category->background_color }} !important;
+            background-image: none;
+            box-shadow: 0 0 5px 2px {{ $category->background_color }} !important;
+            filter: brightness(120%);
+        }
+        @endforeach
+    </style>
 @endsection
 
 @section('scripts')
@@ -35,6 +75,22 @@
                                 @{{ errors.first('step1.description') }}
                             </p>
                         </div>
+                        <div class="form-group limit-width">
+                            <label for="categories"><b>Kategorie</b></label><br/>
+                            <i>Zaznacz jakich tematów dotyczy pomysł.</i><br/><br/>
+                            <div>
+                                <b-button-toolbar class="d-flex">
+                                    @foreach ($categories as $category)
+                                        <b-button size="sm" @click="toggleCategory({{$category->id}})"
+                                                  class="btn-category-{{ $category->id }}"
+                                                  :class="categories.includes(String({{$category->id}})) ? 'pressed' : ''">
+                                            <b>{{ $category->name }}</b>
+                                        </b-button>
+                                    @endforeach
+                                </b-button-toolbar>
+                            </div>
+                        </div>
+                        <input type="hidden" name="categories" ref="categories" value=""/>
                     </div>
                 </tab>
                 <tab name="Krok 2" info="Co?">

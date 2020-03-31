@@ -3,6 +3,46 @@
 @section('title', 'Tech Kontra Wirus | Pomysły')
 
 @section('styles')
+    <style>
+        @foreach ($categories as $category)
+        {{-- TODO: Possibly some clean-up here. --}}
+        .btn-category-{{ $category->id }} {
+            color: {{ $category->text_color }};
+            background-color: {{ $category->background_color }};
+            border-width: 0;
+            border-color: {{ $category->background_color }};
+            box-shadow: none !important;
+            background-image: none;
+            margin: 0 10px 10px 0;
+        }
+        .btn-category-{{ $category->id }}:active {
+            color: {{ $category->text_color }} !important;
+            background-color: {{ $category->background_color }} !important;
+            border-width: 0;
+            background-image: none;
+        }
+        .btn-category-{{ $category->id }}:hover {
+            color: {{ $category->text_color }};
+            background-color: {{ $category->background_color }};
+            background-image: none;
+            border-width: 0;
+            filter: brightness(120%);
+        }
+        .btn-category-{{ $category->id }}:focus {
+            color: {{ $category->text_color }};
+            background-color: {{ $category->background_color }};
+            border-width: 0;
+            background-image: none;
+        }
+        .btn-category-{{ $category->id }}.pressed {
+            color: {{ $category->text_color }} !important;
+            background-color: {{ $category->background_color }} !important;
+            background-image: none;
+            box-shadow: 0 0 5px 2px {{ $category->background_color }} !important;
+            filter: brightness(120%);
+        }
+        @endforeach
+    </style>
 @endsection
 
 @section('scripts')
@@ -35,12 +75,33 @@
 
         <div class="row mt-3">
             <div class="col-lg-8">
+                <div class="mb-3">
+                    <p class="slogans mb-3"><b>Filtr kategorii</b></p>
+                    <div>
+                        <b-button-toolbar class="d-flex">
+                            <b-button size="sm" variant="primary" @click="setCategory(null)"
+                                      style="background-color: #549772;
+                                             border-color: #549772;
+                                             box-shadow: none !important;
+                                             background-image: none;
+                                             margin: 0 10px 10px 0">
+                                <b>wszystkie</b>
+                            </b-button>
+                            @foreach ($categories as $category)
+                                <b-button size="sm" @click="setCategory({{$category->id}})"
+                                          class="btn-category-{{ $category->id }}" :class="category === {{$category->id}} ? 'pressed' : ''">
+                                    <b>{{ $category->name }}</b>
+                                </b-button>
+                            @endforeach
+                        </b-button-toolbar>
+                    </div>
+                </div>
 
                 <div class="ideas">
                     @foreach($ideas as $idea)
                         {{-- Skip hidden ideas. --}}
                         @if ($idea->is_hidden) @continue @endif
-                        <div class="card card-idea">
+                        <div class="card card-idea" v-if="(category === null) || [{{ $idea->getCategoriesString() }}].includes(category)">
                             <div class="card-header">
                                 <plus-minus :value-on-load="{{ $idea->plus - $idea->minus }}"
                                             :ajax-url="'/pomysl/{{ $idea->id }}/glos'"
@@ -53,6 +114,14 @@
                                         Dodano {{ $idea->getCreatedAtForDisplay() }}
                                     </div>
                                     <a href="/pomysl/{{ $idea->id }}" class="btn btn-secondary btn-sm" role="button">Więcej</a>
+                                </div>
+                                <div>
+                                    @foreach ($idea->categories as $category)
+                                        <b-badge style="color: {{ $category->text_color }};
+                                                        background-color: {{ $category->background_color }}">
+                                            {{ $category->name }}
+                                        </b-badge>
+                                    @endforeach
                                 </div>
                                 <div class="title"><a href="/pomysl/{{ $idea->id }}">{{ $idea->title }}</a></div>
                                 <div>{{ $idea->description }}</div>

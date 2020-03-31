@@ -2,6 +2,8 @@ import PlusMinus from './components/PlusMinus.vue';
 Vue.component('PlusMinus', PlusMinus);
 import { AlertPlugin } from 'bootstrap-vue'
 Vue.use(AlertPlugin);
+import { BadgePlugin } from 'bootstrap-vue';
+Vue.use(BadgePlugin);
 import { Validator } from 'vee-validate';
 import VeeValidate from 'vee-validate';
 
