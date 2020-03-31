@@ -105,7 +105,8 @@
                             <div class="card-header">
                                 <plus-minus :value-on-load="{{ $idea->plus - $idea->minus }}"
                                             :ajax-url="'/pomysl/{{ $idea->id }}/glos'"
-                                            :vote-on-load="{{ $voting_history->getIdeaVote($idea->id) }}">
+                                            :vote-on-load="{{ $voting_history->getIdeaVote($idea->id) }}"
+                                            :key="{{ $idea->id }}">
                                 </plus-minus>
                             </div>
                             <div class="card-body">
