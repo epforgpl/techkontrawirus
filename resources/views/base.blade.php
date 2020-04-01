@@ -44,7 +44,7 @@
                 <div>
                     <p class="brand"><a href="/"><span class="icon-shield"></span> Tech Kontra Wirus</a></p>
                 </div>
-                <div class="d-flex align-items-center">
+                <div class="d-flex align-items-center font-larger">
                     <a href="#" v-b-modal.faq><b>Jak to działa?</b></a>
                 </div>
             </div>

@@ -84,7 +84,7 @@
                                         <b-button size="sm" @click="toggleCategory({{$category->id}})"
                                                   class="btn-category-{{ $category->id }}"
                                                   :class="categories.includes(String({{$category->id}})) ? 'pressed' : ''">
-                                            <b>{{ $category->name }}</b>
+                                            {{ $category->name }}
                                         </b-button>
                                     @endforeach
                                 </b-button-toolbar>
