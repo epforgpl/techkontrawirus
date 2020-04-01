@@ -2,11 +2,11 @@
 
 <template>
     <div>
-        <button :class="getBtnClass(true)" @click="onPlusMinusClick(true)" :disabled="this.vote === -1" :key="'btn-up-' + this.key">
+        <button :class="getBtnClass(true)" @click="onPlusMinusClick(true)" :disabled="this.vote === -1">
             <span class="icon icon-arrow-up"></span>
         </button>
-        <div class="button-value" tabindex="0" :key="'value-' + this.key">{{ value }}</div>
-        <button :class="getBtnClass(false)" @click="onPlusMinusClick(false)" :disabled="this.vote === 1" :key="'btn-down-' + this.key">
+        <div class="button-value" tabindex="0">{{ value }}</div>
+        <button :class="getBtnClass(false)" @click="onPlusMinusClick(false)" :disabled="this.vote === 1">
             <span class="icon icon-arrow-down"></span>
         </button>
     </div>
@@ -25,11 +25,6 @@
                 type: String
             },
             voteOnLoad: {
-                default: 0,
-                type: Number
-            },
-            // https://vuejs.org/v2/guide/conditional.html#Controlling-Reusable-Elements-with-key
-            key: {
                 default: 0,
                 type: Number
             }

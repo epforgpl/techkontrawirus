@@ -101,12 +101,11 @@
                     @foreach($ideas as $idea)
                         {{-- Skip hidden ideas. --}}
                         @if ($idea->is_hidden) @continue @endif
-                        <div class="card card-idea" v-if="(category === null) || [{{ $idea->getCategoriesString() }}].includes(category)">
+                        <div class="card card-idea" v-show="(category === null) || [{{ $idea->getCategoriesString() }}].includes(category)">
                             <div class="card-header">
                                 <plus-minus :value-on-load="{{ $idea->plus - $idea->minus }}"
                                             :ajax-url="'/pomysl/{{ $idea->id }}/glos'"
-                                            :vote-on-load="{{ $voting_history->getIdeaVote($idea->id) }}"
-                                            :key="{{ $idea->id }}">
+                                            :vote-on-load="{{ $voting_history->getIdeaVote($idea->id) }}">
                                 </plus-minus>
                             </div>
                             <div class="card-body">
