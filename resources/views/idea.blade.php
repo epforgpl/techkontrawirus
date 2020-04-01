@@ -13,8 +13,7 @@
     <div id="idea" class="container">
 
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/">Pomysły</a></li>
-            <li class="breadcrumb-item active">Pomysł</li>
+            <li class="breadcrumb-item"><a href="/">Powrót na stronę główną</a></li>
         </ol>
 
         @if ($is_new_idea)
@@ -59,7 +58,7 @@
         <div class="limit-width">
             <p class="mt-5 mb-5">
                 Wykorzystaj komentarze do promowania pomysłu i rozwijania go z innymi. Ustaliliście co chcecie robić?
-                Stwórz wątek na <a href="https://forum.kodujdlapolski.pl/c/pomysly/tech-kontra-wirus">forum Koduj dla Polski</a>
+                Stwórz wątek na <a href="https://forum.kodujdlapolski.pl/c/tech-kontra-wirus">forum Koduj dla Polski</a>
                 i umieść link do niego w komentarzach poniżej.
             </p>
 

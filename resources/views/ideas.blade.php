@@ -44,39 +44,39 @@
         @endforeach
        .btn-primary.tkw {
             color: white;
-            background-color: #478060;
+            background-color: #59a179;
             border-width: 0;
-            border-color: #478060;
+            border-color: #59a179;
             box-shadow: none !important;
             background-image: none;
             margin: 0 10px 10px 0;
         }
         .btn-primary.tkw:active {
             color: white !important;
-            background-color: #478060 !important;
+            background-color: #59a179 !important;
             border-width: 0;
             background-image: none;
-            box-shadow: 0 0 5px 2px #478060 !important;
+            box-shadow: 0 0 5px 2px #59a179 !important;
             filter: brightness(120%);
         }
         .btn-primary.tkw:hover {
             color: white;
-            background-color: #478060;
+            background-color: #59a179;
             background-image: none;
             border-width: 0;
             filter: brightness(120%);
         }
        .btn-primary.tkw:focus {
             color: white;
-            background-color: #478060;
+            background-color: #59a179;
             border-width: 0;
             background-image: none;
         }
         .btn-primary.tkw.pressed, .btn-primary.tkw.active {
             color: white !important;
-            background-color: #478060 !important;
+            background-color: #59a179 !important;
             background-image: none;
-            box-shadow: 0 0 5px 2px #478060 !important;
+            box-shadow: 0 0 5px 2px #59a179 !important;
             filter: brightness(120%);
         }
     </style>
@@ -117,17 +117,13 @@
                     <div>
                         <b-button-toolbar class="d-flex">
                             <b-button size="sm" variant="primary" @click="setCategory(null)"
-                                      style="background-color: #549772;
-                                             border-color: #549772;
-                                             box-shadow: none !important;
-                                             background-image: none;
-                                             margin: 0 10px 10px 0">
-                                <b>wszystkie</b>
+                                      class="tkw" :class="category === null ? 'pressed' : ''">
+                                wszystkie
                             </b-button>
                             @foreach ($categories as $category)
                                 <b-button size="sm" @click="setCategory({{$category->id}})"
                                           class="btn-category-{{ $category->id }}" :class="category === {{$category->id}} ? 'pressed' : ''">
-                                    <b>{{ $category->name }}</b>
+                                    {{ $category->name }}
                                 </b-button>
                             @endforeach
                         </b-button-toolbar>
@@ -139,11 +135,11 @@
                     <div>
                         <b-button size="sm" variant="primary" @click="setSorting('votes')" class="tkw"
                                   :class="sorting === 'votes' ? 'active' : ''">
-                            <b>według głosów</b>
+                            najwyżej ocenione
                         </b-button>
                         <b-button size="sm" variant="primary" @click="setSorting('dates')" class="tkw"
                                   :class="sorting === 'dates' ? 'active' : ''">
-                            <b>według czasu dodania</b>
+                            najnowsze
                         </b-button>
                     </div>
                 </div>
@@ -170,7 +166,8 @@
                                 <div>
                                     @foreach ($idea->categories as $category)
                                         <b-badge style="color: {{ $category->text_color }};
-                                                        background-color: {{ $category->background_color }}">
+                                                        background-color: {{ $category->background_color }};
+                                                        font-weight: normal; font-size: small;">
                                             {{ $category->name }}
                                         </b-badge>
                                     @endforeach
