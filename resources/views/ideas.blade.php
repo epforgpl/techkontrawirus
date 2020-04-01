@@ -42,6 +42,43 @@
             filter: brightness(120%);
         }
         @endforeach
+       .btn-primary.tkw {
+            color: white;
+            background-color: #478060;
+            border-width: 0;
+            border-color: #478060;
+            box-shadow: none !important;
+            background-image: none;
+            margin: 0 10px 10px 0;
+        }
+        .btn-primary.tkw:active {
+            color: white !important;
+            background-color: #478060 !important;
+            border-width: 0;
+            background-image: none;
+            box-shadow: 0 0 5px 2px #478060 !important;
+            filter: brightness(120%);
+        }
+        .btn-primary.tkw:hover {
+            color: white;
+            background-color: #478060;
+            background-image: none;
+            border-width: 0;
+            filter: brightness(120%);
+        }
+       .btn-primary.tkw:focus {
+            color: white;
+            background-color: #478060;
+            border-width: 0;
+            background-image: none;
+        }
+        .btn-primary.tkw.pressed, .btn-primary.tkw.active {
+            color: white !important;
+            background-color: #478060 !important;
+            background-image: none;
+            box-shadow: 0 0 5px 2px #478060 !important;
+            filter: brightness(120%);
+        }
     </style>
 @endsection
 
@@ -97,11 +134,26 @@
                     </div>
                 </div>
 
-                <div class="ideas">
+                <div class="mb-3">
+                    <p class="slogans mb-3"><b>Kolejność</b></p>
+                    <div>
+                        <b-button size="sm" variant="primary" @click="setSorting('votes')" class="tkw"
+                                  :class="sorting === 'votes' ? 'active' : ''">
+                            <b>według głosów</b>
+                        </b-button>
+                        <b-button size="sm" variant="primary" @click="setSorting('dates')" class="tkw"
+                                  :class="sorting === 'dates' ? 'active' : ''">
+                            <b>według czasu dodania</b>
+                        </b-button>
+                    </div>
+                </div>
+
+                <div class="ideas" ref="ideas">
                     @foreach($ideas as $idea)
                         {{-- Skip hidden ideas. --}}
                         @if ($idea->is_hidden) @continue @endif
-                        <div class="card card-idea" v-show="(category === null) || [{{ $idea->getCategoriesString() }}].includes(category)">
+                        <div class="card card-idea" data-date="{{ $idea->created_at }}" data-votes="{{ $idea->plus - $idea->minus }}"
+                             v-show="(category === null) || [{{ $idea->getCategoriesString() }}].includes(category)">
                             <div class="card-header">
                                 <plus-minus :value-on-load="{{ $idea->plus - $idea->minus }}"
                                             :ajax-url="'/pomysl/{{ $idea->id }}/glos'"
