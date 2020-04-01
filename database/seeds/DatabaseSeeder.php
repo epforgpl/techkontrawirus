@@ -15,57 +15,57 @@ class DatabaseSeeder extends Seeder
         DB::table('categories')->insert([
             'id' => 1,
             'name' => 'dla chorych',
-            'background_color' => '#007bff',
+            'background_color' => '#cce4ff',
             'text_color' => '#ffffff',
         ]);
         DB::table('categories')->insert([
             'id' => 2,
             'name' => 'dla niewychodzących z domu',
-            'background_color' => '#6610f2',
+            'background_color' => '#e0cffc',
             'text_color' => '#ffffff',
         ]);
         DB::table('categories')->insert([
             'id' => 3,
             'name' => 'edukacja / kultura',
-            'background_color' => '#9B479F',
+            'background_color' => '#ebdaeb',
             'text_color' => '#ffffff',
         ]);
         DB::table('categories')->insert([
             'id' => 4,
             'name' => 'gospodarka / praca / urząd',
-            'background_color' => '#e83e8c',
+            'background_color' => '#fad8e8',
             'text_color' => '#ffffff',
         ]);
         DB::table('categories')->insert([
             'id' => 5,
             'name' => 'informacje, dane i media',
-            'background_color' => '#D9230F',
+            'background_color' => '	#f7d3cf',
             'text_color' => '#ffffff',
         ]);
         DB::table('categories')->insert([
             'id' => 6,
             'name' => 'psychologia',
-            'background_color' => '#D9831F',
+            'background_color' => '#f7e6d2',
             'text_color' => '#000000',
         ]);
         DB::table('categories')->insert([
             'id' => 7,
             'name' => 'społeczność lokalna',
-            'background_color' => '#ffc107',
+            'background_color' => '#fff2cd',
             'text_color' => '#000000',
         ]);
 
         DB::table('categories')->insert([
             'id' => 8,
             'name' => 'urządzenia',
-            'background_color' => '#20c997',
+            'background_color' => '#d2f4ea',
             'text_color' => '#000000',
         ]);
 
         DB::table('categories')->insert([
             'id' => 9,
             'name' => 'zdrowie / służba zdrowia',
-            'background_color' => '#029ACF',
+            'background_color' => '#cceaf5',
             'text_color' => '#ffffff',
         ]);
 
