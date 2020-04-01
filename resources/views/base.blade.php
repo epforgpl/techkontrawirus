@@ -45,14 +45,14 @@
                     <p class="brand"><a href="/"><span class="icon-shield"></span> Tech Kontra Wirus</a></p>
                 </div>
                 <div class="d-flex align-items-center">
-                    <a href="#" v-b-modal.faq>Pytania i odpowiedzi</a>
+                    <a href="#" v-b-modal.faq><b>Jak to działa?</b></a>
                 </div>
             </div>
 
             <div class="d-none">
                 <b-modal id="faq" size="xl" title="Pytania i odpowiedzi" ok-only>
                     <p><b>1. Jak to działa?</b></p>
-                    <p>Szukamy pomysłów, które programiści/programistki będa mogli wprowadzić w życie. Zastawiasz się czy Twoja koncepcja jest wystarczająco dobra albo realna? Wrzuć - będziemy wspólnie myśleć. Pamiętaj jednak, że to nie są żarty, nie zaśmiecajmy platformy pomysłami, które nie mają sensu lub są nierzeczywiste. Jesteś programistą/ką. Chcesz pomóc? Oceniaj pomysły, bierz udział w dyskusjach i pracuj z osobami, które je proponują - a gdy będziesz gotowy/a by zacząć implementację, przenieś się na <a href="https://forum.kodujdlapolski.pl/c/pomysly/tech-kontra-wirus">forum Koduj dla Polski.</a></p>
+                    <p>Szukamy pomysłów, które programiści/programistki będa mogli wprowadzić w życie. Zastawiasz się czy Twoja koncepcja jest wystarczająco dobra albo realna? Wrzuć - będziemy wspólnie myśleć. Pamiętaj jednak, że to nie są żarty, nie zaśmiecajmy platformy pomysłami, które nie mają sensu lub są nierzeczywiste. Jesteś programistą/ką. Chcesz pomóc? Oceniaj pomysły, bierz udział w dyskusjach i pracuj z osobami, które je proponują - a gdy będziesz gotowy/a by zacząć implementację, przenieś się na <a href="https://forum.kodujdlapolski.pl/c/tech-kontra-wirus">forum Koduj dla Polski.</a></p>
                     <p class="mt-4"><b>2. Nie mam pomysłu, ale widzę potrzebę. Co zrobić?</b></p>
                     <p>Nie masz gotowego pomysłu, za to szukasz rozwiązań? Napisz o potrzebie jaką widzisz, a wspólnie pomyślimy co można zrobić!</p>
                     <p class="mt-4"><b>3. Jak oceniane są pomysły?</b></p>
